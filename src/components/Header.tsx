@@ -6,11 +6,11 @@ const Header = () => {
   const { toggle } = useContext(ThemeContext);
 
   return (
-    <header className="dark:bg-slate-700 bg-orange-300">
+    <header className="dark:bg-primary-dark bg-primary">
       Header
       <button onClick={() => toggle()}>Click Me</button>
     </header>
-  );
+);
 };
 
 export default Header;
