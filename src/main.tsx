@@ -5,26 +5,29 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import About from "./components/About.tsx";
 import Cards from "./components/Cards.tsx";
 import Root from "./layouts/Root.tsx";
+import { ThemeProvider } from "./contexts/ThemeContext.tsx";
 
 const router = createBrowserRouter([
   {
-    path:"/",
-    element: <Root/>, 
+    path: "/",
+    element: <Root />,
     children: [
       {
         index: true,
-        element: <Cards/>
-      }, 
+        element: <Cards />,
+      },
       {
         path: "/about",
-        element: <About/>
-      }
-    ]
+        element: <About />,
+      },
+    ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </React.StrictMode>
 );

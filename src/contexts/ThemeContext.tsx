@@ -1,18 +1,32 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 import { FCC } from "../@types/types";
 
 // מבנה של הקונטקסט: משתנים ופונקציות
 export const ThemeContext = createContext({
   theme: "light",
-  toggle: () => {
-    //if light -> dark else light
-  },
+  toggle: () => {},
 });
 
-/*
 export const ThemeProvider: FCC = (props) => {
+  // state variable:
+  const [theme, setTheme] = useState("light");
+
+  // function toggle
+  function toggle() {
+    //const newTheme = "light" | "dark"
+    const newTheme = theme == "dark" ? "light" : "dark";
+
+    if (newTheme == "dark") {
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark");
+    }
+
+    setTheme(newTheme);
+  }
   return (
-    <ThemeContext.Provider value={{}}>{props.children}</ThemeContext.Provider>
+    <ThemeContext.Provider value={{ theme, toggle }}>
+      {props.children}
+    </ThemeContext.Provider>
   );
 };
-*/
