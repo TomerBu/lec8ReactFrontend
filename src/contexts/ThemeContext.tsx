@@ -30,3 +30,5 @@ export const ThemeProvider: FCC = (props) => {
     </ThemeContext.Provider>
   );
 };
+
+export default ThemeContext;

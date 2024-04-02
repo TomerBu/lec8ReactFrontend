@@ -2,8 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import About from "./components/About.tsx";
-import Cards from "./components/Cards.tsx";
+import About from "./routes/About.tsx";
+import Cards from "./routes/Cards.tsx";
 import Root from "./layouts/Root.tsx";
 import { ThemeProvider } from "./contexts/ThemeContext.tsx";
 
