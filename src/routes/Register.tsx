@@ -2,7 +2,10 @@ import { useForm } from "react-hook-form";
 import { RegisterType } from "../@types/types";
 import patterns from "../validation/patterns";
 import { auth } from "../services/auth";
+import { useNavigate } from "react-router-dom";
+ 
 const Register = () => {
+  const navigate = useNavigate();
   const {
     formState: { errors, isValid },
     register,
@@ -14,7 +17,9 @@ const Register = () => {
     auth
       .register(data)
       .then((res) => {
+        console.log(res);
         alert("Success");
+        navigate("/login");
       })
       .catch((e) => {
         alert(e.response.data);
