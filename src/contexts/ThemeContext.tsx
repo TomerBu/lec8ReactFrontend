@@ -1,3 +1,8 @@
+// צרו קונטקסט חדש בשם AuthContext
+// משתנה בשם isLoggedIn = false
+// function login(jwt:string)=>void
+// function logout()=>void
+
 import { createContext, useState } from "react";
 import { FCC } from "../@types/types";
 

@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { LoginType } from "../@types/types";
 import patterns from "../validation/patterns";
+import { auth } from "../services/auth";
 
 const Login = () => {
   //1) types
@@ -10,14 +11,29 @@ const Login = () => {
   //5) inputs and p
 
   const onLogin = (data: LoginType) => {
-    alert(JSON.stringify(data));
+    auth
+      .login(data)
+      .then((res) => {
+        const jwt = res.data as string;
+        console.log(jwt);
+        //save the JWT in localStorage
+        //context auth -> isLoggedIn = true (app wide state)
+        // go to home page -> navigate("/")
+      })
+      .catch((e) => {
+        const errorMessage = e.response.data as string;
+        alert(errorMessage);
+      });
   };
 
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
-  } = useForm<LoginType>({ mode: "onTouched" });
+  } = useForm<LoginType>({
+    mode: "onTouched",
+    defaultValues: { email: "iMosheVis@gmail.com", password: "Abc!123Abc" },
+  });
   return (
     <>
       <h1>Login</h1>
