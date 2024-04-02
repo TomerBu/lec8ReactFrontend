@@ -2,23 +2,21 @@ import { useForm } from "react-hook-form";
 import { LoginType } from "../@types/types";
 import patterns from "../validation/patterns";
 import { auth } from "../services/auth";
+import { useContext } from "react";
+import { AuthContext } from "../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  //1) types
-  //2) useForm
-  //3) onLogin function
-  //4) form
-  //5) inputs and p
+  const authContext = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const onLogin = (data: LoginType) => {
     auth
       .login(data)
       .then((res) => {
         const jwt = res.data as string;
-        console.log(jwt);
-        //save the JWT in localStorage
-        //context auth -> isLoggedIn = true (app wide state)
-        // go to home page -> navigate("/")
+        authContext.login(jwt);
+        navigate("/");
       })
       .catch((e) => {
         const errorMessage = e.response.data as string;
