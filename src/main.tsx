@@ -8,6 +8,7 @@ import Root from "./layouts/Root.tsx";
 import { ThemeProvider } from "./contexts/ThemeContext.tsx";
 import Register from "./routes/Register.tsx";
 import Login from "./routes/Login.tsx";
+import { AuthContextProvider } from "./contexts/AuthContext.tsx";
 
 const router = createBrowserRouter([
   {
@@ -37,7 +38,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ThemeProvider>
-      <RouterProvider router={router} />
+      <AuthContextProvider>
+        <RouterProvider router={router} />
+      </AuthContextProvider>
     </ThemeProvider>
   </React.StrictMode>
 );
