@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { RegisterType } from "../@types/types";
 import patterns from "../validation/patterns";
+import { auth } from "../services/auth";
 const Register = () => {
   const {
     formState: { errors, isValid },
@@ -10,7 +11,15 @@ const Register = () => {
 
   // פונקציה שנפעיל בלחיצה על כפתור שליחה - רק אם הטופס תקין
   function onRegister(data: RegisterType) {
-    alert(`Your name is ${data.name.first}`);
+   
+    auth
+      .register(data)
+      .then((res) => {
+        alert("Success");
+      })
+      .catch((e) => {
+        alert("Error");
+      });
   }
 
   return (
