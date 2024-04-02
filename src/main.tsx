@@ -6,6 +6,7 @@ import About from "./routes/About.tsx";
 import Cards from "./routes/Cards.tsx";
 import Root from "./layouts/Root.tsx";
 import { ThemeProvider } from "./contexts/ThemeContext.tsx";
+import Register from "./routes/Register.tsx";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
       },
     ],
   },
