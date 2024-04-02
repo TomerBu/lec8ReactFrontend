@@ -11,14 +11,13 @@ const Register = () => {
 
   // פונקציה שנפעיל בלחיצה על כפתור שליחה - רק אם הטופס תקין
   function onRegister(data: RegisterType) {
-   
     auth
       .register(data)
       .then((res) => {
         alert("Success");
       })
       .catch((e) => {
-        alert("Error");
+        alert(e.response.data);
       });
   }
 
